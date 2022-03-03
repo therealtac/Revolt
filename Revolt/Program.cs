@@ -10,6 +10,7 @@ namespace Revolt
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
