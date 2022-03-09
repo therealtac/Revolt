@@ -43,5 +43,14 @@ namespace Revolt
                 viewRevoltists.MdiParent = this;
             }
         }
+
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            if (_revoltist.password == Utils.defaultHashedPassword())
+            {
+                Form resetPassword = new ResetPassword(_revoltist);
+                resetPassword.ShowDialog();
+            }
+        }
     }
 }

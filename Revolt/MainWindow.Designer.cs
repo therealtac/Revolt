@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuRevoltists = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMia = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGames = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMiaRun = new System.Windows.Forms.ToolStripMenuItem();
             this.game2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +49,11 @@
             this.statusStrip1.Size = new System.Drawing.Size(800, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslUser
+            // 
+            this.tsslUser.Name = "tsslUser";
+            this.tsslUser.Size = new System.Drawing.Size(0, 17);
             // 
             // menuStrip1
             // 
@@ -87,19 +92,14 @@
             // menuMiaRun
             // 
             this.menuMiaRun.Name = "menuMiaRun";
-            this.menuMiaRun.Size = new System.Drawing.Size(180, 22);
+            this.menuMiaRun.Size = new System.Drawing.Size(118, 22);
             this.menuMiaRun.Text = "Mia Run";
             // 
             // game2ToolStripMenuItem
             // 
             this.game2ToolStripMenuItem.Name = "game2ToolStripMenuItem";
-            this.game2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.game2ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.game2ToolStripMenuItem.Text = "Game2";
-            // 
-            // tsslUser
-            // 
-            this.tsslUser.Name = "tsslUser";
-            this.tsslUser.Size = new System.Drawing.Size(0, 17);
             // 
             // MainWindow
             // 
@@ -112,6 +112,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

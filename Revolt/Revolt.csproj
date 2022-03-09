@@ -39,6 +39,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRemoveRevoltist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRemoveRevoltist.Designer.cs">
+      <DependentUpon>AddRemoveRevoltist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditRevoltistsTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditRevoltistsTitle.Designer.cs">
+      <DependentUpon>EditRevoltistsTitle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +91,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="RevoltDatabase.Context.cs">
       <AutoGen>True</AutoGen>
@@ -142,6 +161,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddRemoveRevoltist.resx">
+      <DependentUpon>AddRemoveRevoltist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditRevoltistsTitle.resx">
+      <DependentUpon>EditRevoltistsTitle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +179,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewRevoltists.resx">
       <DependentUpon>ViewRevoltists.cs</DependentUpon>

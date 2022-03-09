@@ -1,6 +1,6 @@
 ﻿namespace Revolt
 {
-    partial class ManageRevoltists
+    partial class ManageRevoltists : ViewRevoltists
     {
         /// <summary>
         /// Required designer variable.
