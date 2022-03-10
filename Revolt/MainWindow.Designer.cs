@@ -28,27 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ssUser = new System.Windows.Forms.StatusStrip();
             this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuRevoltists = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMia = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGames = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuMiaRun = new System.Windows.Forms.ToolStripMenuItem();
-            this.game2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.statusStrip1.SuspendLayout();
+            this.menuFirstGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSecondGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnResetPassword = new System.Windows.Forms.Button();
+            this.tsbtnPlayFirstGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbtnLeaderboardFirstGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbtnPlaySecondGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbtnLeaderboardSecondGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.ssUser.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // statusStrip1
+            // ssUser
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ssUser.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslUser});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
+            this.ssUser.Location = new System.Drawing.Point(0, 428);
+            this.ssUser.Name = "ssUser";
+            this.ssUser.Size = new System.Drawing.Size(800, 22);
+            this.ssUser.TabIndex = 0;
+            this.ssUser.Text = "statusStrip1";
             // 
             // tsslUser
             // 
@@ -83,38 +88,81 @@
             // menuGames
             // 
             this.menuGames.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuMiaRun,
-            this.game2ToolStripMenuItem});
+            this.menuFirstGame,
+            this.menuSecondGame});
             this.menuGames.Name = "menuGames";
             this.menuGames.Size = new System.Drawing.Size(55, 20);
             this.menuGames.Text = "Games";
             // 
-            // menuMiaRun
+            // menuFirstGame
             // 
-            this.menuMiaRun.Name = "menuMiaRun";
-            this.menuMiaRun.Size = new System.Drawing.Size(118, 22);
-            this.menuMiaRun.Text = "Mia Run";
+            this.menuFirstGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnPlayFirstGame,
+            this.tsbtnLeaderboardFirstGame});
+            this.menuFirstGame.Name = "menuFirstGame";
+            this.menuFirstGame.Size = new System.Drawing.Size(180, 22);
             // 
-            // game2ToolStripMenuItem
+            // menuSecondGame
             // 
-            this.game2ToolStripMenuItem.Name = "game2ToolStripMenuItem";
-            this.game2ToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.game2ToolStripMenuItem.Text = "Game2";
+            this.menuSecondGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnPlaySecondGame,
+            this.tsbtnLeaderboardSecondGame});
+            this.menuSecondGame.Name = "menuSecondGame";
+            this.menuSecondGame.Size = new System.Drawing.Size(180, 22);
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Location = new System.Drawing.Point(670, 427);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(106, 23);
+            this.btnResetPassword.TabIndex = 3;
+            this.btnResetPassword.Text = "Reset Password";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
+            // tsbtnPlayFirstGame
+            // 
+            this.tsbtnPlayFirstGame.Name = "tsbtnPlayFirstGame";
+            this.tsbtnPlayFirstGame.Size = new System.Drawing.Size(180, 22);
+            this.tsbtnPlayFirstGame.Text = "Play";
+            this.tsbtnPlayFirstGame.Click += new System.EventHandler(this.tsbtnPlayFirstGame_Click);
+            // 
+            // tsbtnLeaderboardFirstGame
+            // 
+            this.tsbtnLeaderboardFirstGame.Name = "tsbtnLeaderboardFirstGame";
+            this.tsbtnLeaderboardFirstGame.Size = new System.Drawing.Size(180, 22);
+            this.tsbtnLeaderboardFirstGame.Text = "Leaderboard";
+            this.tsbtnLeaderboardFirstGame.Click += new System.EventHandler(this.tsbtnLeaderboardFirstGame_Click);
+            // 
+            // tsbtnPlaySecondGame
+            // 
+            this.tsbtnPlaySecondGame.Name = "tsbtnPlaySecondGame";
+            this.tsbtnPlaySecondGame.Size = new System.Drawing.Size(180, 22);
+            this.tsbtnPlaySecondGame.Text = "Play";
+            this.tsbtnPlaySecondGame.Click += new System.EventHandler(this.tsbtnPlaySecondGame_Click);
+            // 
+            // tsbtnLeaderboardSecondGame
+            // 
+            this.tsbtnLeaderboardSecondGame.Name = "tsbtnLeaderboardSecondGame";
+            this.tsbtnLeaderboardSecondGame.Size = new System.Drawing.Size(180, 22);
+            this.tsbtnLeaderboardSecondGame.Text = "Leaderboard";
+            this.tsbtnLeaderboardSecondGame.Click += new System.EventHandler(this.tsbtnLeaderboardSecondGame_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.btnResetPassword);
+            this.Controls.Add(this.ssUser);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.ssUser.ResumeLayout(false);
+            this.ssUser.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -124,13 +172,18 @@
 
         #endregion
 
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip ssUser;
         private System.Windows.Forms.ToolStripStatusLabel tsslUser;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuRevoltists;
         private System.Windows.Forms.ToolStripMenuItem menuMia;
         private System.Windows.Forms.ToolStripMenuItem menuGames;
-        private System.Windows.Forms.ToolStripMenuItem menuMiaRun;
-        private System.Windows.Forms.ToolStripMenuItem game2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuFirstGame;
+        private System.Windows.Forms.ToolStripMenuItem menuSecondGame;
+        private System.Windows.Forms.Button btnResetPassword;
+        private System.Windows.Forms.ToolStripMenuItem tsbtnPlayFirstGame;
+        private System.Windows.Forms.ToolStripMenuItem tsbtnLeaderboardFirstGame;
+        private System.Windows.Forms.ToolStripMenuItem tsbtnPlaySecondGame;
+        private System.Windows.Forms.ToolStripMenuItem tsbtnLeaderboardSecondGame;
     }
 }

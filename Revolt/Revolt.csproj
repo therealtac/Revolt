@@ -67,6 +67,15 @@
     <Compile Include="EditRevoltistsTitle.Designer.cs">
       <DependentUpon>EditRevoltistsTitle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Game.cs">
+      <DependentUpon>Revolt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Leaderboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Leaderboard.Designer.cs">
+      <DependentUpon>Leaderboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,34 +107,34 @@
     <Compile Include="ResetPassword.Designer.cs">
       <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="RevoltDatabase.Context.cs">
+    <Compile Include="Revolt.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RevoltDatabase.Context.tt</DependentUpon>
+      <DependentUpon>Revolt.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="RevoltDatabase.cs">
+    <Compile Include="Revolt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RevoltDatabase.tt</DependentUpon>
+      <DependentUpon>Revolt.tt</DependentUpon>
     </Compile>
-    <Compile Include="RevoltDatabase.Designer.cs">
+    <Compile Include="Revolt.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RevoltDatabase.edmx</DependentUpon>
+      <DependentUpon>Revolt.edmx</DependentUpon>
     </Compile>
     <Compile Include="Revoltist.cs">
-      <DependentUpon>RevoltDatabase.tt</DependentUpon>
+      <DependentUpon>Revolt.tt</DependentUpon>
     </Compile>
     <Compile Include="RevoltistGameScore.cs">
-      <DependentUpon>RevoltDatabase.tt</DependentUpon>
+      <DependentUpon>Revolt.tt</DependentUpon>
     </Compile>
     <Compile Include="RevoltistTitle.cs">
-      <DependentUpon>RevoltDatabase.tt</DependentUpon>
+      <DependentUpon>Revolt.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Title.cs">
+      <DependentUpon>Revolt.tt</DependentUpon>
     </Compile>
     <Compile Include="TitleEnum.cs" />
-    <Compile Include="Title.cs">
-      <DependentUpon>RevoltDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Utils.cs" />
     <Compile Include="ViewRevoltists.cs">
       <SubType>Form</SubType>
@@ -137,28 +146,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="RevoltDatabase.edmx">
+    <EntityDeploy Include="Revolt.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RevoltDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>Revolt.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="RevoltDatabase.edmx.diagram">
-      <DependentUpon>RevoltDatabase.edmx</DependentUpon>
+    <None Include="Revolt.edmx.diagram">
+      <DependentUpon>Revolt.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RevoltDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RevoltDatabase.edmx</DependentUpon>
-      <LastGenOutput>RevoltDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="RevoltDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RevoltDatabase.edmx</DependentUpon>
-      <LastGenOutput>RevoltDatabase.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddRemoveRevoltist.resx">
@@ -166,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditRevoltistsTitle.resx">
       <DependentUpon>EditRevoltistsTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Leaderboard.resx">
+      <DependentUpon>Leaderboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -186,6 +186,18 @@
     <EmbeddedResource Include="ViewRevoltists.resx">
       <DependentUpon>ViewRevoltists.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Revolt.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Revolt.edmx</DependentUpon>
+      <LastGenOutput>Revolt.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Revolt.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Revolt.edmx</DependentUpon>
+      <LastGenOutput>Revolt.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

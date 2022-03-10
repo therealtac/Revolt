@@ -25,6 +25,7 @@ namespace Revolt
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Game> Games { get; set; }
         public virtual DbSet<Revoltist> Revoltists { get; set; }
         public virtual DbSet<RevoltistGameScore> RevoltistGameScores { get; set; }
         public virtual DbSet<RevoltistTitle> RevoltistTitles { get; set; }

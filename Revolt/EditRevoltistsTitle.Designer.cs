@@ -30,11 +30,11 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbRevoltist = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPromote = new System.Windows.Forms.Button();
             this.clbTitles = new System.Windows.Forms.CheckedListBox();
-            this.cbRevoltist = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,16 @@
             this.label2.Size = new System.Drawing.Size(68, 30);
             this.label2.TabIndex = 0;
             this.label2.Text = "Revoltist";
+            // 
+            // cbRevoltist
+            // 
+            this.cbRevoltist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRevoltist.FormattingEnabled = true;
+            this.cbRevoltist.Location = new System.Drawing.Point(3, 50);
+            this.cbRevoltist.Name = "cbRevoltist";
+            this.cbRevoltist.Size = new System.Drawing.Size(188, 21);
+            this.cbRevoltist.TabIndex = 1;
+            this.cbRevoltist.SelectedIndexChanged += new System.EventHandler(this.cbRevoltist_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -95,6 +105,7 @@
             this.btnPromote.TabIndex = 4;
             this.btnPromote.Text = "Update";
             this.btnPromote.UseVisualStyleBackColor = false;
+            this.btnPromote.Click += new System.EventHandler(this.btnPromote_Click);
             // 
             // clbTitles
             // 
@@ -105,16 +116,6 @@
             this.clbTitles.Name = "clbTitles";
             this.clbTitles.Size = new System.Drawing.Size(498, 229);
             this.clbTitles.TabIndex = 6;
-            // 
-            // cbRevoltist
-            // 
-            this.cbRevoltist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRevoltist.FormattingEnabled = true;
-            this.cbRevoltist.Location = new System.Drawing.Point(3, 50);
-            this.cbRevoltist.Name = "cbRevoltist";
-            this.cbRevoltist.Size = new System.Drawing.Size(188, 21);
-            this.cbRevoltist.TabIndex = 1;
-            this.cbRevoltist.SelectedIndexChanged += new System.EventHandler(this.cbRevoltist_SelectedIndexChanged);
             // 
             // EditRevoltistsTitle
             // 

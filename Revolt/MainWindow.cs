@@ -12,12 +12,14 @@ namespace Revolt
 {
     public partial class MainWindow : Form
     {
+        private readonly RevoltEntities _db;
         private Login _login;
         public Revoltist _revoltist;
 
         public MainWindow()
         {
             InitializeComponent();
+            _db = new RevoltEntities();
         }
 
         public MainWindow(Login login, Revoltist revoltist)
@@ -25,6 +27,7 @@ namespace Revolt
             InitializeComponent();
             _login = login;
             _revoltist = revoltist;
+            _db = new RevoltEntities();
         }
 
         private void menuRevoltists_Click(object sender, EventArgs e)
@@ -51,6 +54,38 @@ namespace Revolt
                 Form resetPassword = new ResetPassword(_revoltist);
                 resetPassword.ShowDialog();
             }
+            tsslUser.Text = $"User: {_revoltist.username}";
+
+            menuFirstGame.Text = _db.Games.FirstOrDefault(q => q.id == 0).game1;
+            menuSecondGame.Text = _db.Games.FirstOrDefault(q => q.id == 1).game1;
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            Form resetPassword = new ResetPassword(_revoltist);
+            resetPassword.ShowDialog();
+        }
+
+        private void tsbtnPlayFirstGame_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbtnLeaderboardFirstGame_Click(object sender, EventArgs e)
+        {
+            Form leaderboard = new Leaderboard(0);
+            leaderboard.ShowDialog();
+        }
+
+        private void tsbtnPlaySecondGame_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbtnLeaderboardSecondGame_Click(object sender, EventArgs e)
+        {
+            Form leaderboard = new Leaderboard(1);
+            leaderboard.ShowDialog();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Revolt
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());
-            //Application.Run(new AddRemoveRevoltist(true));
+            //Application.Run(new MainWindow());
         }
     }
 }

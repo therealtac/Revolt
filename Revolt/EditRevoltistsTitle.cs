@@ -52,5 +52,23 @@ namespace Revolt
             }
             
         }
+
+        private void btnPromote_Click(object sender, EventArgs e)
+        {
+            long title = 0;
+            foreach (int i in clbTitles.CheckedIndices)
+                if (Enum.TryParse(clbTitles.Items[i].ToString(), out TitleEnum t))
+                    title += (long)t;
+            try
+            {
+                int id = (int)cbRevoltist.SelectedValue;
+                _db.RevoltistTitles.FirstOrDefault(q => q.id == id).title = title;
+                _db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
     }
 }

@@ -4,7 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="RevoltModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RevoltModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Games">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="game" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Revoltist">
           <Key>
             <PropertyRef Name="id" />
@@ -16,10 +23,10 @@
         <EntityType Name="RevoltistGameScores">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="game" />
+            <PropertyRef Name="gameId" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="game" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gameId" Type="int" Nullable="false" />
           <Property Name="score" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RevoltistTitle">
@@ -36,7 +43,19 @@
           <Property Name="titleId" Type="bigint" Nullable="false" />
           <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__RevoltistGam__id__4CA06362">
+        <Association Name="FK__Revoltist__gameI__628FA481">
+          <End Role="Games" Type="Self.Games" Multiplicity="1" />
+          <End Role="RevoltistGameScores" Type="Self.RevoltistGameScores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RevoltistGameScores">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RevoltistGam__id__619B8048">
           <End Role="Revoltist" Type="Self.Revoltist" Multiplicity="1" />
           <End Role="RevoltistGameScores" Type="Self.RevoltistGameScores" Multiplicity="*" />
           <ReferentialConstraint>
@@ -61,11 +80,16 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="RevoltModelStoreContainer">
+          <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Revoltist" EntityType="Self.Revoltist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RevoltistGameScores" EntityType="Self.RevoltistGameScores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RevoltistTitle" EntityType="Self.RevoltistTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__RevoltistGam__id__4CA06362" Association="Self.FK__RevoltistGam__id__4CA06362">
+          <AssociationSet Name="FK__Revoltist__gameI__628FA481" Association="Self.FK__Revoltist__gameI__628FA481">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="RevoltistGameScores" EntitySet="RevoltistGameScores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RevoltistGam__id__619B8048" Association="Self.FK__RevoltistGam__id__619B8048">
             <End Role="Revoltist" EntitySet="Revoltist" />
             <End Role="RevoltistGameScores" EntitySet="RevoltistGameScores" />
           </AssociationSet>
@@ -74,43 +98,39 @@
             <End Role="RevoltistTitle" EntitySet="RevoltistTitle" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RevoltModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="RevoltEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Revoltists" EntityType="RevoltModel.Revoltist" />
-          <EntitySet Name="RevoltistGameScores" EntityType="RevoltModel.RevoltistGameScore" />
-          <EntitySet Name="RevoltistTitles" EntityType="RevoltModel.RevoltistTitle" />
-          <EntitySet Name="Titles" EntityType="RevoltModel.Title" />
-          <AssociationSet Name="FK__RevoltistGam__id__4CA06362" Association="RevoltModel.FK__RevoltistGam__id__4CA06362">
-            <End Role="Revoltist" EntitySet="Revoltists" />
-            <End Role="RevoltistGameScore" EntitySet="RevoltistGameScores" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RevoltistTit__id__4F7CD00D" Association="RevoltModel.FK__RevoltistTit__id__4F7CD00D">
-            <End Role="Revoltist" EntitySet="Revoltists" />
-            <End Role="RevoltistTitle" EntitySet="RevoltistTitles" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityType Name="Game">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="game1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RevoltistGameScores" Relationship="Self.FK__Revoltist__gameI__628FA481" FromRole="Games" ToRole="RevoltistGameScores" />
+        </EntityType>
         <EntityType Name="Revoltist">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="RevoltistGameScores" Relationship="RevoltModel.FK__RevoltistGam__id__4CA06362" FromRole="Revoltist" ToRole="RevoltistGameScore" />
-          <NavigationProperty Name="RevoltistTitle" Relationship="RevoltModel.FK__RevoltistTit__id__4F7CD00D" FromRole="Revoltist" ToRole="RevoltistTitle" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="RevoltistGameScores" Relationship="Self.FK__RevoltistGam__id__619B8048" FromRole="Revoltist" ToRole="RevoltistGameScores" />
+          <NavigationProperty Name="RevoltistTitle" Relationship="Self.FK__RevoltistTit__id__4F7CD00D" FromRole="Revoltist" ToRole="RevoltistTitle" />
         </EntityType>
         <EntityType Name="RevoltistGameScore">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="game" />
+            <PropertyRef Name="gameId" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="game" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gameId" Type="Int32" Nullable="false" />
           <Property Name="score" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Revoltist" Relationship="RevoltModel.FK__RevoltistGam__id__4CA06362" FromRole="RevoltistGameScore" ToRole="Revoltist" />
+          <NavigationProperty Name="Game" Relationship="Self.FK__Revoltist__gameI__628FA481" FromRole="RevoltistGameScores" ToRole="Games" />
+          <NavigationProperty Name="Revoltist" Relationship="Self.FK__RevoltistGam__id__619B8048" FromRole="RevoltistGameScores" ToRole="Revoltist" />
         </EntityType>
         <EntityType Name="RevoltistTitle">
           <Key>
@@ -118,30 +138,42 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Revoltist" Relationship="RevoltModel.FK__RevoltistTit__id__4F7CD00D" FromRole="RevoltistTitle" ToRole="Revoltist" />
+          <NavigationProperty Name="Revoltist" Relationship="Self.FK__RevoltistTit__id__4F7CD00D" FromRole="RevoltistTitle" ToRole="Revoltist" />
         </EntityType>
         <EntityType Name="Title">
           <Key>
             <PropertyRef Name="titleId" />
           </Key>
           <Property Name="titleId" Type="Int64" Nullable="false" />
-          <Property Name="title1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="title1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="FK__RevoltistGam__id__4CA06362">
-          <End Type="RevoltModel.Revoltist" Role="Revoltist" Multiplicity="1" />
-          <End Type="RevoltModel.RevoltistGameScore" Role="RevoltistGameScore" Multiplicity="*" />
+        <Association Name="FK__Revoltist__gameI__628FA481">
+          <End Role="Games" Type="Self.Game" Multiplicity="1" />
+          <End Role="RevoltistGameScores" Type="Self.RevoltistGameScore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Games">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RevoltistGameScores">
+              <PropertyRef Name="gameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RevoltistGam__id__619B8048">
+          <End Role="Revoltist" Type="Self.Revoltist" Multiplicity="1" />
+          <End Role="RevoltistGameScores" Type="Self.RevoltistGameScore" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Revoltist">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="RevoltistGameScore">
+            <Dependent Role="RevoltistGameScores">
               <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__RevoltistTit__id__4F7CD00D">
-          <End Type="RevoltModel.Revoltist" Role="Revoltist" Multiplicity="1" />
-          <End Type="RevoltModel.RevoltistTitle" Role="RevoltistTitle" Multiplicity="0..1" />
+          <End Role="Revoltist" Type="Self.Revoltist" Multiplicity="1" />
+          <End Role="RevoltistTitle" Type="Self.RevoltistTitle" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Revoltist">
               <PropertyRef Name="id" />
@@ -151,43 +183,70 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="RevoltEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Games" EntityType="Self.Game" />
+          <EntitySet Name="Revoltists" EntityType="Self.Revoltist" />
+          <EntitySet Name="RevoltistGameScores" EntityType="Self.RevoltistGameScore" />
+          <EntitySet Name="RevoltistTitles" EntityType="Self.RevoltistTitle" />
+          <EntitySet Name="Titles" EntityType="Self.Title" />
+          <AssociationSet Name="FK__Revoltist__gameI__628FA481" Association="Self.FK__Revoltist__gameI__628FA481">
+            <End Role="Games" EntitySet="Games" />
+            <End Role="RevoltistGameScores" EntitySet="RevoltistGameScores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RevoltistGam__id__619B8048" Association="Self.FK__RevoltistGam__id__619B8048">
+            <End Role="Revoltist" EntitySet="Revoltists" />
+            <End Role="RevoltistGameScores" EntitySet="RevoltistGameScores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RevoltistTit__id__4F7CD00D" Association="Self.FK__RevoltistTit__id__4F7CD00D">
+            <End Role="Revoltist" EntitySet="Revoltists" />
+            <End Role="RevoltistTitle" EntitySet="RevoltistTitles" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="RevoltModelStoreContainer" CdmEntityContainer="RevoltEntities">
+          <EntitySetMapping Name="Games">
+            <EntityTypeMapping TypeName="RevoltModel.Game">
+              <MappingFragment StoreEntitySet="Games">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="game1" ColumnName="game" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Revoltists">
             <EntityTypeMapping TypeName="RevoltModel.Revoltist">
               <MappingFragment StoreEntitySet="Revoltist">
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RevoltistGameScores">
             <EntityTypeMapping TypeName="RevoltModel.RevoltistGameScore">
               <MappingFragment StoreEntitySet="RevoltistGameScores">
-                <ScalarProperty Name="score" ColumnName="score" />
-                <ScalarProperty Name="game" ColumnName="game" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gameId" ColumnName="gameId" />
+                <ScalarProperty Name="score" ColumnName="score" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RevoltistTitles">
             <EntityTypeMapping TypeName="RevoltModel.RevoltistTitle">
               <MappingFragment StoreEntitySet="RevoltistTitle">
-                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Titles">
             <EntityTypeMapping TypeName="RevoltModel.Title">
               <MappingFragment StoreEntitySet="Title">
-                <ScalarProperty Name="title1" ColumnName="title" />
                 <ScalarProperty Name="titleId" ColumnName="titleId" />
+                <ScalarProperty Name="title1" ColumnName="title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

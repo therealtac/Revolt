@@ -12,13 +12,18 @@ namespace Revolt
     using System;
     using System.Collections.Generic;
     
-    public partial class RevoltistGameScore
+    public partial class Game
     {
-        public int id { get; set; }
-        public int gameId { get; set; }
-        public int score { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Game()
+        {
+            this.RevoltistGameScores = new HashSet<RevoltistGameScore>();
+        }
     
-        public virtual Game Game { get; set; }
-        public virtual Revoltist Revoltist { get; set; }
+        public int id { get; set; }
+        public string game1 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RevoltistGameScore> RevoltistGameScores { get; set; }
     }
 }
