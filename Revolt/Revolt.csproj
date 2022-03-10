@@ -70,6 +70,12 @@
     <Compile Include="Game.cs">
       <DependentUpon>Revolt.tt</DependentUpon>
     </Compile>
+    <Compile Include="GameOne.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameOne.Designer.cs">
+      <DependentUpon>GameOne.cs</DependentUpon>
+    </Compile>
     <Compile Include="Leaderboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     <EmbeddedResource Include="EditRevoltistsTitle.resx">
       <DependentUpon>EditRevoltistsTitle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GameOne.resx">
+      <DependentUpon>GameOne.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Leaderboard.resx">
       <DependentUpon>Leaderboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,6 +197,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\fryer.png" />
+    <None Include="Resources\chicken1.png" />
+    <None Include="Resources\Layla %281%29.png" />
+    <None Include="Resources\Mia.gif" />
     <Content Include="Revolt.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Revolt.edmx</DependentUpon>

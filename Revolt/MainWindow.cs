@@ -68,7 +68,8 @@ namespace Revolt
 
         private void tsbtnPlayFirstGame_Click(object sender, EventArgs e)
         {
-
+            Form game = new GameOne(_revoltist);
+            game.ShowDialog();
         }
 
         private void tsbtnLeaderboardFirstGame_Click(object sender, EventArgs e)
