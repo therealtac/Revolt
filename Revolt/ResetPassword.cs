@@ -30,8 +30,10 @@ namespace Revolt
                 String password = tbNewPassword.Text;
                 String confirmPassword = tbConfirmPassword.Text;
 
+                //get user whose password to change
                 Revoltist user = _db.Revoltists.FirstOrDefault(q => q.id == _revoltist.id);
 
+                //if passwords do not match, try again
                 if (password != confirmPassword)
                 {
                     MessageBox.Show("Passwords do not match.  Please try again!");

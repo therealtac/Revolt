@@ -20,9 +20,9 @@ namespace Revolt
             _db = new RevoltEntities();
         }
 
+        //when form loads, add all revoltists to the dataview, and all titles in the checked list box
         public void ViewRevoltists_Load(object sender, EventArgs e)
         {
-            
             var revoltists = _db.Revoltists.Select(q => new { id = q.id, username = q.username, title = q.RevoltistTitle.title }).ToList();
             dvRevoltists.DataSource = revoltists;
             
@@ -31,9 +31,9 @@ namespace Revolt
             dvRevoltists.Columns["id"].Visible = false;
 
             clbTitles.Items.AddRange(Enum.GetNames(typeof(TitleEnum)));
-            
         }
 
+        //update checked list box whenever the numeric up down changes
         public void nupTitleLookup_ValueChanged(object sender, EventArgs e)
         {
             TitleEnum title = (TitleEnum)nupTitleLookup.Value;
@@ -42,6 +42,7 @@ namespace Revolt
                         clbTitles.SetItemChecked(i, title.HasFlag(t));
         }
 
+        //update the numeric up down whenever the check list box changes
         public void clbTitles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             long title = 0;

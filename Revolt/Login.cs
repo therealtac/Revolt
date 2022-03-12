@@ -26,11 +26,12 @@ namespace Revolt
             {
                 String username = tbUsername.Text.Trim();
                 String password = tbPassword.Text;
-
                 String hashedPassword = Utils.hashPassword(password);
 
+                //get user if exists
                 Revoltist user = _db.Revoltists.FirstOrDefault(q => q.username == username && q.password == hashedPassword);
 
+                //if user doesnt exist, can't login, else open the mainwindow
                 if (user == null)
                 {
                     MessageBox.Show("Please provide valid credentials");

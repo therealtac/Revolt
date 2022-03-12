@@ -31,6 +31,8 @@ namespace Revolt
 
             return sBuilder.ToString();
         }
+
+        //get the default password in hash form
         public static String defaultHashedPassword()
         {
             SHA256 sha = SHA256.Create();

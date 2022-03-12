@@ -22,6 +22,7 @@ namespace Revolt
             _db = new RevoltEntities();
         }
 
+        //when form loads, fill in the checked list box, and the combobox
         private void EditRevoltistsTitle_Load(object sender, EventArgs e)
         {
             clbTitles.Items.AddRange(Enum.GetNames(typeof(TitleEnum)));
@@ -30,10 +31,10 @@ namespace Revolt
             cbRevoltist.DataSource = revoltists;
             cbRevoltist.DisplayMember = "username";
             cbRevoltist.ValueMember = "id";
-
             cbRevoltist.SelectedIndex = -1;
         }
 
+        //whenever the index changes in the combobox, update the checked list box with new titles
         private void cbRevoltist_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbRevoltist.SelectedIndex == -1) return;
@@ -54,6 +55,7 @@ namespace Revolt
 
         private void btnPromote_Click(object sender, EventArgs e)
         {
+            //add up the checked boxes to find the title value
             long title = 0;
             foreach (int i in clbTitles.CheckedIndices)
                 if (Enum.TryParse(clbTitles.Items[i].ToString(), out TitleEnum t))
@@ -61,6 +63,8 @@ namespace Revolt
             try
             {
                 int id = (int)cbRevoltist.SelectedValue;
+
+                //update the title of revoltist
                 _db.RevoltistTitles.FirstOrDefault(q => q.id == id).title = title;
                 _db.SaveChanges();
                 MessageBox.Show("Revoltist's titles updated!");

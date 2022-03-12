@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Revolt
 {
+    //if revoltist is queen, king, leader, or deputy, adds more options from ViewRevoltists form
     public partial class ManageRevoltists : ViewRevoltists
     {
         public ManageRevoltists() : base()
@@ -17,24 +18,28 @@ namespace Revolt
             InitializeComponent();
         }
 
+        //add revoltist, _isAdding = true
         private void addRevoltistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form addRemoveRevoltist = new AddRemoveRevoltist(true);
             addRemoveRevoltist.ShowDialog();
         }
 
+        //remove revoltist, _isAdding = false
         private void removeRevoltistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form addRemoveRevoltist = new AddRemoveRevoltist(false);
             addRemoveRevoltist.ShowDialog();
         }
 
+        //promote and demote are the same form here
         private void promoteRevoltistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form editForm = new EditRevoltistsTitle();
             editForm.ShowDialog();
         }
 
+        //promote and demote are the same form here
         private void demoteRevoltistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form editForm = new EditRevoltistsTitle();

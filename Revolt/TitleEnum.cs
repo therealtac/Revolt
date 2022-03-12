@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Revolt{
 
+    //all of the possible titles, which can be combinations as well
     [Flags] public enum TitleEnum : long{
         NONE            = 0,
         QUEEN           = 1,

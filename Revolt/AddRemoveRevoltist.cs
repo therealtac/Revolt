@@ -26,11 +26,16 @@ namespace Revolt
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             String username = cbRevoltist.Text;
+
+            //this form has two modes, adding a revoltist and removing a revoltist
             if (_isAdding)
             {
+                //two things need to be added, Revoltist and RevoltistTitle
                 Revoltist revoltist = new Revoltist();
                 RevoltistTitle title = new RevoltistTitle();
                 title.id = revoltist.id;
+
+                //default title is none, edit in edit form
                 title.title = (long)TitleEnum.NONE;
                 revoltist.username = username;
                 revoltist.password = Utils.defaultHashedPassword();
@@ -39,6 +44,7 @@ namespace Revolt
             }
             else
             {
+                //two things need to be removed, Revoltist and RevoltistTitle
                 Revoltist revoltist = _db.Revoltists.FirstOrDefault(q => q.id == (int)cbRevoltist.SelectedValue);
                 RevoltistTitle revoltistTitle = _db.RevoltistTitles.FirstOrDefault(q => q.id == (int)cbRevoltist.SelectedValue);
                 _db.RevoltistTitles.Remove(revoltistTitle);
@@ -49,6 +55,7 @@ namespace Revolt
             Close();
         }
 
+        //when form loads, fill in the combobox
         private void AddRemoveRevoltist_Load(object sender, EventArgs e)
         {
             List<Revoltist> revoltists = _db.Revoltists.ToList();

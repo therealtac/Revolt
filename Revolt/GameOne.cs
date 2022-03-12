@@ -15,6 +15,8 @@ namespace Revolt
 
         private readonly RevoltEntities _db;
         private Revoltist _revoltist;
+
+        //game variables
         private bool jumping;
         private int jumpSpeed;
         private int force;
@@ -30,6 +32,7 @@ namespace Revolt
             _revoltist = revoltist;
         }
 
+        //reset the game to defaults
         private void reset()
         {
             force = 12;
@@ -48,12 +51,14 @@ namespace Revolt
             timer.Start();
         }
 
+        //when space is pressed, jump
         private void GameOne_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space && !jumping)
                 jumping = true;
         }
 
+        //when r is let go, reset the game and if space (implied), stop jumping
         private void GameOne_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.R)
@@ -62,6 +67,7 @@ namespace Revolt
                 jumping = false;
         }
 
+        //rotates image when player loses
         private static Image RotateImage(Image img, float rotationAngle)
         {
             Bitmap bmp = new Bitmap(img.Width, img.Height);
@@ -74,11 +80,12 @@ namespace Revolt
             return bmp;
         }
 
+        //event happens every 20 ms
         private void timer_Tick(object sender, EventArgs e)
         {
             picMia.Top += jumpSpeed;
-
             scoreText.Text = "Score: " + score;
+
             if (jumping && force < 0)
                 jumping = false;
             if (jumping)
@@ -102,6 +109,7 @@ namespace Revolt
                         score++;
                     }
 
+                    //when player dies, stop the game/event
                     if (picMia.Bounds.IntersectsWith(x.Bounds))
                     {
                         timer.Stop();
@@ -109,6 +117,9 @@ namespace Revolt
                         scoreText.Text += "  Press R to restart";
 
                         RevoltistGameScore revoltistGameScore = _db.RevoltistGameScores.FirstOrDefault(q => q.gameId == 0 && q.id == _revoltist.id);
+                        
+                        //if not the first time playing, and score is better than previous attempts, save it
+                        //if first time, save a new entity
                         if(revoltistGameScore != null)
                         {
                             int oldScore = revoltistGameScore.score;
@@ -126,6 +137,8 @@ namespace Revolt
                         _db.SaveChanges();
                     }
                 }
+
+                //moves the chicken and if intersected with Mia, add a point
                 if (x is PictureBox && x.Tag == "chicken")
                 {
                     x.Left -= obstacleSpeed / 2;

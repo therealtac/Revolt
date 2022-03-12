@@ -70,6 +70,7 @@
             this.Controls.Add(this.picMia);
             this.Name = "Slideshow";
             this.Text = "Slideshow";
+            this.Load += new System.EventHandler(this.Slideshow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picMia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
