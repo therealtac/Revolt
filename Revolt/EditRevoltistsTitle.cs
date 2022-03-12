@@ -50,7 +50,6 @@ namespace Revolt
             {
                 
             }
-            
         }
 
         private void btnPromote_Click(object sender, EventArgs e)
@@ -64,11 +63,13 @@ namespace Revolt
                 int id = (int)cbRevoltist.SelectedValue;
                 _db.RevoltistTitles.FirstOrDefault(q => q.id == id).title = title;
                 _db.SaveChanges();
+                MessageBox.Show("Revoltist's titles updated!");
             }
             catch (Exception)
             {
 
             }
+            Close();
         }
     }
 }

@@ -32,7 +32,6 @@ namespace Revolt
 
             clbTitles.Items.AddRange(Enum.GetNames(typeof(TitleEnum)));
             
-            
         }
 
         public void nupTitleLookup_ValueChanged(object sender, EventArgs e)

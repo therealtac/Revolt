@@ -80,7 +80,7 @@ namespace Revolt
 
         private void tsbtnPlaySecondGame_Click(object sender, EventArgs e)
         {
-
+            //implement if I have time
         }
 
         private void tsbtnLeaderboardSecondGame_Click(object sender, EventArgs e)

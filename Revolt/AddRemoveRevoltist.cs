@@ -21,7 +21,6 @@ namespace Revolt
             InitializeComponent();
             _db = new RevoltEntities();
             _isAdding = isAdding;
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -33,7 +32,6 @@ namespace Revolt
                 RevoltistTitle title = new RevoltistTitle();
                 title.id = revoltist.id;
                 title.title = (long)TitleEnum.NONE;
-                //revoltist.RevoltistTitle.title = (long)TitleEnum.NONE;
                 revoltist.username = username;
                 revoltist.password = Utils.defaultHashedPassword();
                 _db.Revoltists.Add(revoltist);
@@ -47,6 +45,7 @@ namespace Revolt
                 _db.Revoltists.Remove(revoltist);
             }
             _db.SaveChanges();
+            MessageBox.Show(_isAdding ? "Revoltist added!" : "Revoltist removed!");
             Close();
         }
 
