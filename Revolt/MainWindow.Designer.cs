@@ -35,12 +35,12 @@
             this.menuMia = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGames = new System.Windows.Forms.ToolStripMenuItem();
             this.menuFirstGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSecondGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnResetPassword = new System.Windows.Forms.Button();
             this.tsbtnPlayFirstGame = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbtnLeaderboardFirstGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSecondGame = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbtnPlaySecondGame = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbtnLeaderboardSecondGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.ssUser.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,7 @@
             this.menuMia.Name = "menuMia";
             this.menuMia.Size = new System.Drawing.Size(39, 20);
             this.menuMia.Text = "Mia";
+            this.menuMia.Click += new System.EventHandler(this.menuMia_Click);
             // 
             // menuGames
             // 
@@ -100,7 +101,21 @@
             this.tsbtnPlayFirstGame,
             this.tsbtnLeaderboardFirstGame});
             this.menuFirstGame.Name = "menuFirstGame";
-            this.menuFirstGame.Size = new System.Drawing.Size(180, 22);
+            this.menuFirstGame.Size = new System.Drawing.Size(67, 22);
+            // 
+            // tsbtnPlayFirstGame
+            // 
+            this.tsbtnPlayFirstGame.Name = "tsbtnPlayFirstGame";
+            this.tsbtnPlayFirstGame.Size = new System.Drawing.Size(140, 22);
+            this.tsbtnPlayFirstGame.Text = "Play";
+            this.tsbtnPlayFirstGame.Click += new System.EventHandler(this.tsbtnPlayFirstGame_Click);
+            // 
+            // tsbtnLeaderboardFirstGame
+            // 
+            this.tsbtnLeaderboardFirstGame.Name = "tsbtnLeaderboardFirstGame";
+            this.tsbtnLeaderboardFirstGame.Size = new System.Drawing.Size(140, 22);
+            this.tsbtnLeaderboardFirstGame.Text = "Leaderboard";
+            this.tsbtnLeaderboardFirstGame.Click += new System.EventHandler(this.tsbtnLeaderboardFirstGame_Click);
             // 
             // menuSecondGame
             // 
@@ -108,7 +123,21 @@
             this.tsbtnPlaySecondGame,
             this.tsbtnLeaderboardSecondGame});
             this.menuSecondGame.Name = "menuSecondGame";
-            this.menuSecondGame.Size = new System.Drawing.Size(180, 22);
+            this.menuSecondGame.Size = new System.Drawing.Size(67, 22);
+            // 
+            // tsbtnPlaySecondGame
+            // 
+            this.tsbtnPlaySecondGame.Name = "tsbtnPlaySecondGame";
+            this.tsbtnPlaySecondGame.Size = new System.Drawing.Size(140, 22);
+            this.tsbtnPlaySecondGame.Text = "Play";
+            this.tsbtnPlaySecondGame.Click += new System.EventHandler(this.tsbtnPlaySecondGame_Click);
+            // 
+            // tsbtnLeaderboardSecondGame
+            // 
+            this.tsbtnLeaderboardSecondGame.Name = "tsbtnLeaderboardSecondGame";
+            this.tsbtnLeaderboardSecondGame.Size = new System.Drawing.Size(140, 22);
+            this.tsbtnLeaderboardSecondGame.Text = "Leaderboard";
+            this.tsbtnLeaderboardSecondGame.Click += new System.EventHandler(this.tsbtnLeaderboardSecondGame_Click);
             // 
             // btnResetPassword
             // 
@@ -119,34 +148,6 @@
             this.btnResetPassword.Text = "Reset Password";
             this.btnResetPassword.UseVisualStyleBackColor = true;
             this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
-            // 
-            // tsbtnPlayFirstGame
-            // 
-            this.tsbtnPlayFirstGame.Name = "tsbtnPlayFirstGame";
-            this.tsbtnPlayFirstGame.Size = new System.Drawing.Size(180, 22);
-            this.tsbtnPlayFirstGame.Text = "Play";
-            this.tsbtnPlayFirstGame.Click += new System.EventHandler(this.tsbtnPlayFirstGame_Click);
-            // 
-            // tsbtnLeaderboardFirstGame
-            // 
-            this.tsbtnLeaderboardFirstGame.Name = "tsbtnLeaderboardFirstGame";
-            this.tsbtnLeaderboardFirstGame.Size = new System.Drawing.Size(180, 22);
-            this.tsbtnLeaderboardFirstGame.Text = "Leaderboard";
-            this.tsbtnLeaderboardFirstGame.Click += new System.EventHandler(this.tsbtnLeaderboardFirstGame_Click);
-            // 
-            // tsbtnPlaySecondGame
-            // 
-            this.tsbtnPlaySecondGame.Name = "tsbtnPlaySecondGame";
-            this.tsbtnPlaySecondGame.Size = new System.Drawing.Size(180, 22);
-            this.tsbtnPlaySecondGame.Text = "Play";
-            this.tsbtnPlaySecondGame.Click += new System.EventHandler(this.tsbtnPlaySecondGame_Click);
-            // 
-            // tsbtnLeaderboardSecondGame
-            // 
-            this.tsbtnLeaderboardSecondGame.Name = "tsbtnLeaderboardSecondGame";
-            this.tsbtnLeaderboardSecondGame.Size = new System.Drawing.Size(180, 22);
-            this.tsbtnLeaderboardSecondGame.Text = "Leaderboard";
-            this.tsbtnLeaderboardSecondGame.Click += new System.EventHandler(this.tsbtnLeaderboardSecondGame_Click);
             // 
             // MainWindow
             // 

@@ -88,5 +88,11 @@ namespace Revolt
             Form leaderboard = new Leaderboard(1);
             leaderboard.ShowDialog();
         }
+
+        private void menuMia_Click(object sender, EventArgs e)
+        {
+            Form miaSlideshow = new Slideshow();
+            miaSlideshow.ShowDialog();
+        }
     }
 }

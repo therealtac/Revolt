@@ -110,6 +110,7 @@
             // clbTitles
             // 
             this.clbTitles.BackColor = System.Drawing.Color.PaleGreen;
+            this.clbTitles.CheckOnClick = true;
             this.clbTitles.FormattingEnabled = true;
             this.clbTitles.Location = new System.Drawing.Point(269, 151);
             this.clbTitles.MultiColumn = true;
