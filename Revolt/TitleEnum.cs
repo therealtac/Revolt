@@ -8,7 +8,7 @@ namespace Revolt{
 
     //all of the possible titles, which can be combinations as well
     [Flags] public enum TitleEnum : long{
-        NONE            = 0,
+        REVOLTIST       = 0,
         QUEEN           = 1,
         KING            = 2,
         LEADER          = 4,

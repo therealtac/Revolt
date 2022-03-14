@@ -35,8 +35,8 @@ namespace Revolt
                 RevoltistTitle title = new RevoltistTitle();
                 title.id = revoltist.id;
 
-                //default title is none, edit in edit form
-                title.title = (long)TitleEnum.NONE;
+                //default title is revoltist, edit in edit form
+                title.title = (long)TitleEnum.REVOLTIST;
                 revoltist.username = username;
                 revoltist.password = Utils.defaultHashedPassword();
                 _db.Revoltists.Add(revoltist);
